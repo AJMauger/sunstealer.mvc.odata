@@ -1,0 +1,32 @@
+﻿@model string;
+
+@{
+    ViewData["Title"] = "Home";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Sandpit OData API Server with Identity and Swagger.</p>
+
+<hr />
+<a href="odata">odata</a><br />
+<a href="odata/$metadata">odata/$metadata</a><br />
+
+<hr />
+<a href="odata/Edm">odata/Edm</a><br />
+<a href="odata/Edm?$expand=list">odata/Edm?$expand=list</a><br />
+<a href="odata/Edm?$filter=key gt 90">odata/Edm?$filter=key > 90</a><br />
+<a href="odata/Edm?$select=dictionary">odata/Edm?$select=dictionary</a><br />
+<a href="odata/Edm?$skip=50&top=10">odata/Edm?$skip=50&top=10</a>
+<br />
+<br />
+<br />
+
+<!-- // ajm: identity -->
+<div style="display: @(sunstealer.mvc.odata.Services.Application.Auth ? "flex" : "none"); flex-direction: row; font-size: 12px;">
+    <div style="width: 10%;">access_token:</div>
+    <div style="width: 60%; overflow: auto;">@ViewBag.AccessToken</div>
+</div>
+<div style="display: @(sunstealer.mvc.odata.Services.Application.Auth ? "flex" : "none"); flex-direction: row; font-size: 12px;">
+    <div style="width: 10%;">JWT:</div>
+    <div style="width: 60%; overflow: auto;"><pre>@ViewBag.Token</pre></div>
+</div>
